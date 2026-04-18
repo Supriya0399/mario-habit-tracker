@@ -34,7 +34,7 @@ function MarioHitBlock() {
     }
   }, [profile])
 
-  const MOVE_SPEED = 3 // pixels per frame
+  const MOVE_SPEED = 6 // pixels per frame
 
   // Dynamically calculate block positions based on number of habits
   const getBlockPositions = () => {
