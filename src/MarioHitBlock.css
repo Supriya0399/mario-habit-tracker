@@ -350,7 +350,7 @@ body, html {
 /* Mario Container */
 .mario-container {
   position: fixed;
-  bottom: 298px;
+  bottom: 297px;
   left: 0;
   transition: none;
   z-index: 50;
