@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.auth-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #5C94FC, #87CEEB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.auth-card {
+  background: white;
+  border: 6px solid black;
+  border-radius: 4px;
+  padding: 50px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.auth-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: black;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.auth-mario {
+  width: 80px;
+  height: 80px;
+  image-rendering: pixelated;
+  margin: 10px 0;
+}
+
+.auth-subtitle {
+  margin: 0;
+  font-size: 1.2rem;
+  color: black;
+  text-align: center;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 18px;
+  font-size: 1rem;
+  border: 3px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+  background: white;
+  color: black;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #f39c12;
+}
+
+.auth-button {
+  background: #f39c12;
+  color: white;
+  border: 3px solid black;
+  border-radius: 4px;
+  padding: 18px 40px;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  transition: all 0.1s;
+  letter-spacing: 1px;
+}
+
+.auth-button:hover:not(:disabled) {
+  background: #e67e22;
+}
+
+.auth-button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-toggle {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.7rem;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.auth-toggle:hover {
+  color: #f39c12;
+}
+
+.auth-error {
+  background: rgba(231, 76, 60, 0.1);
+  border: 2px solid #e74c3c;
+  border-radius: 4px;
+  padding: 12px;
+  color: #e74c3c;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1.5;
+}
