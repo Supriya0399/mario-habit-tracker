@@ -99,14 +99,27 @@ export function useDailyProgress(userId) {
 
         // Create snapshot for yesterday (even if no habits completed)
         if (lastActiveDate) {
+          // Query yesterday's actual completions from database
+          const { data: yesterdayCompletions, error: queryError } = await supabase
+            .from('daily_completions')
+            .select('habit_id')
+            .eq('user_id', userId)
+            .eq('completion_date', lastActiveDate)
+
+          if (queryError) {
+            console.error('Error querying yesterday completions:', queryError)
+          }
+
+          const yesterdayCount = yesterdayCompletions?.length || 0
+
           const { error: snapshotError } = await supabase
             .from('daily_snapshots')
             .insert([
               {
                 user_id: userId,
                 snapshot_date: lastActiveDate,
-                coins_earned: completions.size,
-                habits_completed: completions.size,
+                coins_earned: yesterdayCount,
+                habits_completed: yesterdayCount,
                 day_number: dayCount
               }
             ])
