@@ -97,8 +97,8 @@ export function useDailyProgress(userId) {
         // New day detected!
         console.log('New day detected! Resetting...')
 
-        // Create snapshot for yesterday if there were completions
-        if (lastActiveDate && completions.size > 0) {
+        // Create snapshot for yesterday (even if no habits completed)
+        if (lastActiveDate) {
           const { error: snapshotError } = await supabase
             .from('daily_snapshots')
             .insert([
