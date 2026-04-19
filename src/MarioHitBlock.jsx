@@ -11,6 +11,7 @@ function MarioHitBlock() {
   const {
     completions,
     todaysCoins,
+    totalCoins,
     dayCount,
     completeHabit,
     checkAndResetDaily,
@@ -232,7 +233,7 @@ function MarioHitBlock() {
         <div className="hud-center">
           <div className="hud-stat">
             <img src="/mario-assets/coin.svg" alt="coin" className="hud-coin" />
-            <div className="hud-value">×{todaysCoins.toString().padStart(2, '0')}</div>
+            <div className="hud-value">×{totalCoins.toString().padStart(2, '0')}</div>
           </div>
           <div className="hud-stat">
             <div className="hud-label">DAY</div>

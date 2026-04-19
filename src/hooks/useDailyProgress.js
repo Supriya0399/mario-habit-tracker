@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 export function useDailyProgress(userId) {
   const [completions, setCompletions] = useState(new Set())
   const [todaysCoins, setTodaysCoins] = useState(0)
+  const [totalCoins, setTotalCoins] = useState(0)
   const [dayCount, setDayCount] = useState(1)
   const [loading, setLoading] = useState(true)
 
@@ -11,6 +12,7 @@ export function useDailyProgress(userId) {
     if (userId) {
       loadTodaysCompletions()
       loadDayCount()
+      loadTotalCoins()
     }
   }, [userId])
 
@@ -54,6 +56,20 @@ export function useDailyProgress(userId) {
     }
   }
 
+  const loadTotalCoins = async () => {
+    try {
+      const { count, error } = await supabase
+        .from('daily_completions')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId)
+
+      if (error) throw error
+      setTotalCoins(count || 0)
+    } catch (error) {
+      console.error('Error loading total coins:', error)
+    }
+  }
+
   const completeHabit = async (habitId) => {
     try {
       const today = getTodayDate()
@@ -80,6 +96,7 @@ export function useDailyProgress(userId) {
       // Update local state
       setCompletions(new Set([...completions, habitId]))
       setTodaysCoins(prev => prev + 1)
+      setTotalCoins(prev => prev + 1)
 
       return { data, error: null }
     } catch (error) {
@@ -149,6 +166,7 @@ export function useDailyProgress(userId) {
   return {
     completions,
     todaysCoins,
+    totalCoins,
     dayCount,
     loading,
     completeHabit,
